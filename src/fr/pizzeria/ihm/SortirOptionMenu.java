@@ -1,8 +1,10 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
+
+import fr.pizzeria.dao.PizzaDaoMemoire;
 
 public class SortirOptionMenu extends OptionMenu {
 
-	public SortirOptionMenu(PizzaDao dao) {
+	public SortirOptionMenu(PizzaDaoMemoire dao) {
 		super(dao);
 	}
 

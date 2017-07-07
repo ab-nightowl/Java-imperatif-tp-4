@@ -1,11 +1,13 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
 import java.util.Scanner;
+
+import fr.pizzeria.dao.PizzaDaoMemoire;
 
 
 public class Menu {
 
-	PizzaDao dao;
+	PizzaDaoMemoire dao;
 	Scanner sc;
 	String userInput;
 	
@@ -18,7 +20,7 @@ public class Menu {
 	OptionMenu[] menu;
 	
 	public Menu() {
-		this.dao = new PizzaDao();
+		this.dao = new PizzaDaoMemoire();
 		this.sc = new Scanner(System.in);
 		this.userInput = "";
 		

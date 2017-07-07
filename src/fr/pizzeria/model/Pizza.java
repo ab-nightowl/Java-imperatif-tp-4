@@ -7,8 +7,11 @@ public class Pizza {
 	String nom;
 	double prix;
 	
-	public Pizza(Integer id, String code, String nom, double prix) {
-		this.id = id;
+	static int currentId;
+	
+	
+	public Pizza(String code, String nom, double prix) {
+		this.id = currentId++;
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;

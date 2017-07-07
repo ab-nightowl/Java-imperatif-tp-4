@@ -1,10 +1,11 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
+import fr.pizzeria.dao.PizzaDaoMemoire;
 import fr.pizzeria.model.Pizza;
 
 public class ListerPizzasOptionMenu extends OptionMenu {
 
-	public ListerPizzasOptionMenu(PizzaDao dao) {
+	public ListerPizzasOptionMenu(PizzaDaoMemoire dao) {
 		super(dao);
 	}
 	
@@ -13,7 +14,7 @@ public class ListerPizzasOptionMenu extends OptionMenu {
 	}
 	
 	public boolean execute() {
-		Pizza[] carteDesPizzas = dao.getCarteDesPizzas();
+		Pizza[] carteDesPizzas = dao.findAllPizzas();
 		ListerPizzasOptionMenu.afficherCarte(carteDesPizzas);
 		return false;
 	}

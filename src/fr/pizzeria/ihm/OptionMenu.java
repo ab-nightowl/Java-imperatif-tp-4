@@ -1,15 +1,17 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import fr.pizzeria.dao.PizzaDaoMemoire;
+
 public abstract class OptionMenu {
 
-	PizzaDao dao;
+	protected PizzaDaoMemoire dao;
 	Scanner sc;
 	String userChoice;
 	boolean trouve;
 	
-	public OptionMenu(PizzaDao dao) {
+	public OptionMenu(PizzaDaoMemoire dao) {
 		this.dao = dao;
 		this.sc = new Scanner(System.in);
 		this.userChoice = "";

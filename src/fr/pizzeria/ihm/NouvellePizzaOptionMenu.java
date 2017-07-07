@@ -1,10 +1,11 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
+import fr.pizzeria.dao.PizzaDaoMemoire;
 import fr.pizzeria.model.Pizza;
 
 public class NouvellePizzaOptionMenu extends OptionMenu {
 	
-	public NouvellePizzaOptionMenu(PizzaDao dao) {
+	public NouvellePizzaOptionMenu(PizzaDaoMemoire dao) {
 		super(dao);
 	}
 
@@ -13,7 +14,6 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 	}
 	
 	public boolean execute() {
-		Pizza[] carteDesPizzas = dao.getCarteDesPizzas();
 		
 		System.out.println("Veuillez saisir le code");
 		String code = sc.nextLine();
@@ -23,11 +23,9 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 
 		System.out.println("Veuillez saisir le prix");
 		Integer prix = Integer.parseInt(sc.nextLine());
-
-		int nouvelIndex = dao.findNewId();
-
-		Pizza nouvellePizza = new Pizza(nouvelIndex, code, nomPizza, prix);
-		carteDesPizzas[nouvelIndex] = nouvellePizza;
+		
+		Pizza nouvellePizza = new Pizza(code, nomPizza, prix);
+		dao.saveNewPizza(nouvellePizza);
 
 		return false;
 	}
