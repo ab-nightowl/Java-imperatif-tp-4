@@ -2,5 +2,4 @@ bin
 .classpath
 .project
 .settings/
-pom.xml
 target/
