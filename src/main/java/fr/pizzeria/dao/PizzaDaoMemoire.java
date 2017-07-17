@@ -8,7 +8,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 
 	public PizzaDaoMemoire() {
 		carteDesPizzas = new Pizza[100];
-		carteDesPizzas[0] = new Pizza("PEP", "Pépéroni", 12.50);
+		carteDesPizzas[0] = new Pizza("PEP", "PÃ©pÃ©roni", 12.50);
 		carteDesPizzas[1] = new Pizza("MAR", "Margherita", 14.00);
 		carteDesPizzas[2] = new Pizza("REI", "La Reine", 11.50);
 		carteDesPizzas[3] = new Pizza("FRO", "La 4 fromages", 12.00);
@@ -18,7 +18,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 		carteDesPizzas[7] = new Pizza("IND", "L'Indienne", 14.00);
 
 	}
-	
+
 	@Override
 	public boolean saveNewPizza(Pizza pizza) {
 		int nouvelIndex = this.findNewId();
@@ -39,7 +39,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -54,23 +54,23 @@ public class PizzaDaoMemoire implements IPizzaDao {
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
+	@Override
 	public Pizza[] findAllPizzas() {
 		return carteDesPizzas;
 	}
 
-	
-	public int findNewId(){
-		
-		for(int i=0; i< carteDesPizzas.length; i++){
-			if (carteDesPizzas[i]==null){
+	public int findNewId() {
+
+		for (int i = 0; i < carteDesPizzas.length; i++) {
+			if (carteDesPizzas[i] == null) {
 				return i;
 			}
 		}
-	
+
 		return 0;
 	}
 

@@ -17,7 +17,7 @@ public class Menu {
 	SupprimerPizzaOptionMenu supprimerPizza;
 	SortirOptionMenu sortir;
 	
-	OptionMenu[] menu;
+	OptionMenu[] options;
 	
 	public Menu() {
 		this.dao = new PizzaDaoMemoire();
@@ -30,12 +30,12 @@ public class Menu {
 		this.supprimerPizza = new SupprimerPizzaOptionMenu(dao);
 		this.sortir = new SortirOptionMenu(dao);
 		
-		this.menu = new OptionMenu[5];
-		this.menu[0] = listerPizza;
-		this.menu[1] = nouvellePizza;
-		this.menu[2] = mettreAJourPizza;
-		this.menu[3] = supprimerPizza;
-		this.menu[4] = sortir;
+		this.options = new OptionMenu[5];
+		this.options[0] = listerPizza;
+		this.options[1] = nouvellePizza;
+		this.options[2] = mettreAJourPizza;
+		this.options[3] = supprimerPizza;
+		this.options[4] = sortir;
 		
 	}
 	
@@ -43,7 +43,7 @@ public class Menu {
 	public void manage() {
 		while (!(userInput.equals("99"))) {
 			System.out.println("***** Pizzeria Administration *****");
-			Menu.afficher(menu);
+			Menu.afficher(options);
 			userInput = sc.nextLine();
 
 			switch (userInput) {
@@ -71,7 +71,7 @@ public class Menu {
 				break;
 	
 				default:
-					Menu.afficher(menu);
+					Menu.afficher(options);
 			}
 		}
 	}

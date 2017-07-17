@@ -8,25 +8,27 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 		super(dao);
 	}
 
+	@Override
 	public String getLibelle() {
 		return "4. Supprimer une pizza";
 	}
 
+	@Override
 	public boolean execute() {
-		
+
 		do {
-			System.out.println("Veuillez choisir le code de la pizza à supprimer (en majuscules)");
+			System.out.println("Veuillez choisir le code de la pizza Ã  supprimer (en majuscules)");
 			userChoice = sc.nextLine();
-			
+
 			trouve = dao.findByCode(userChoice);
-			
+
 			if (!trouve) {
-				System.out.println("Le code "+userChoice+" n'existe pas");
+				System.out.println("Le code " + userChoice + " n'existe pas");
 			}
-		} while(!trouve);
-		
+		} while (!trouve);
+
 		dao.deletePizza(userChoice);
-		
+
 		return false;
 	}
 }

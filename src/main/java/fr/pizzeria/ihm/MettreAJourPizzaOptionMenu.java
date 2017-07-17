@@ -9,23 +9,25 @@ public class MettreAJourPizzaOptionMenu extends OptionMenu {
 		super(dao);
 	}
 
+	@Override
 	public String getLibelle() {
-		return "3. Mettre à jour une pizza";
+		return "3. Mettre Ã  jour une pizza";
 	}
 
+	@Override
 	public boolean execute() {
-	
+
 		do {
-			System.out.println("Veuillez choisir le code de la pizza à modifier (en majuscules)");
+			System.out.println("Veuillez choisir le code de la pizza Ã  modifier (en majuscules)");
 			userChoice = sc.nextLine();
-			
+
 			trouve = dao.findByCode(userChoice);
-			if (!trouve){
-				System.out.println("Le code "+userChoice+" n'existe pas");
+			if (!trouve) {
+				System.out.println("Le code " + userChoice + " n'existe pas");
 			}
-			
-		} while(!trouve);
-		
+
+		} while (!trouve);
+
 		System.out.println("Veuillez saisir le code");
 		String nouveauCode = sc.nextLine();
 
@@ -36,7 +38,7 @@ public class MettreAJourPizzaOptionMenu extends OptionMenu {
 		Integer nouveauPrix = Integer.parseInt(sc.nextLine());
 
 		Pizza nouvellePizza = new Pizza(nouveauCode, nouveauNom, nouveauPrix);
-		
+
 		dao.updatePizza(userChoice, nouvellePizza);
 
 		return false;
