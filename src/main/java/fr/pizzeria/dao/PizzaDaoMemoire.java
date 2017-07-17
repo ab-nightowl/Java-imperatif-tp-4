@@ -1,8 +1,13 @@
 package fr.pizzeria.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoMemoire implements IPizzaDao {
+
+	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoMemoire.class);
 
 	private Pizza[] carteDesPizzas;
 
@@ -21,6 +26,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 
 	@Override
 	public boolean saveNewPizza(Pizza pizza) {
+		LOG.debug("Sauvegarde de la pizza {}", pizza);
 		int nouvelIndex = this.findNewId();
 		pizza.setId(nouvelIndex);
 		carteDesPizzas[nouvelIndex] = pizza;
@@ -29,6 +35,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 
 	@Override
 	public boolean updatePizza(String codePizza, Pizza pizzaAJour) {
+		LOG.debug("Mise à jour de la pizza {}", pizzaAJour);
 		for (Integer i = 0; i < carteDesPizzas.length; i++) {
 			if (carteDesPizzas[i] != null) {
 				String codeCourant = carteDesPizzas[i].getCode();
@@ -45,6 +52,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 
 	@Override
 	public boolean deletePizza(String codePizza) {
+		LOG.debug("Suppression de la pizza {}", codePizza);
 		for (Integer i = 0; i < carteDesPizzas.length; i++) {
 			if (carteDesPizzas[i] != null) {
 				String codeCourant = carteDesPizzas[i].getCode();
@@ -60,10 +68,12 @@ public class PizzaDaoMemoire implements IPizzaDao {
 
 	@Override
 	public Pizza[] findAllPizzas() {
+		LOG.debug("Recherche de toutes les pizzas");
 		return carteDesPizzas;
 	}
 
 	public int findNewId() {
+		LOG.debug("Recherche d'un nouvel id (premier id disponible");
 
 		for (int i = 0; i < carteDesPizzas.length; i++) {
 			if (carteDesPizzas[i] == null) {
@@ -75,6 +85,7 @@ public class PizzaDaoMemoire implements IPizzaDao {
 	}
 
 	public boolean findByCode(String codePizza) {
+		LOG.debug("Recherche de la pizza avec le code {}", codePizza);
 		for (Integer i = 0; i < carteDesPizzas.length; i++) {
 			if (carteDesPizzas[i] != null) {
 				String codeCourant = carteDesPizzas[i].getCode();

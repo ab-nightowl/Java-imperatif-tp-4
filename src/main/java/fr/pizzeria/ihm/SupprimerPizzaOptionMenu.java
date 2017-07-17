@@ -1,8 +1,13 @@
 package fr.pizzeria.ihm;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.pizzeria.dao.PizzaDaoMemoire;
 
 public class SupprimerPizzaOptionMenu extends OptionMenu {
+
+	private static final Logger LOG = LoggerFactory.getLogger(SupprimerPizzaOptionMenu.class);
 
 	public SupprimerPizzaOptionMenu(PizzaDaoMemoire dao) {
 		super(dao);
@@ -17,13 +22,13 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 	public boolean execute() {
 
 		do {
-			System.out.println("Veuillez choisir le code de la pizza à supprimer (en majuscules)");
+			LOG.info("Veuillez choisir le code de la pizza à supprimer (en majuscules)");
 			userChoice = sc.nextLine();
 
 			trouve = dao.findByCode(userChoice);
 
 			if (!trouve) {
-				System.out.println("Le code " + userChoice + " n'existe pas");
+				LOG.info("Le code " + userChoice + " n'existe pas");
 			}
 		} while (!trouve);
 
